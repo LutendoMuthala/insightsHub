@@ -8,12 +8,18 @@
 <body class="login-page">
   <div class="login-container">
     <h2>Create an Account</h2>
-    <input type="text" id="newUsername" placeholder="Username">
-    <input type="password" id="newPassword" placeholder="Password">
+    
+    <input type="text" id="newUsername" placeholder="Full Names" required>
+    <input type="email" id="newEmail" placeholder="Email Address" required>
+    <input type="password" id="newPassword" placeholder="Password" required>
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
     <button onclick="signUp()">Sign Up</button>
+    
     <p>Already have an account? <a href="index.html">Login</a></p>
   </div>
 
-  <script src="auth.js"></script>
+  <script src="js/auth.js"></script>
 </body>
 </html>
+
