@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>InsightHub - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <h1>InsightHub</h1>
+    <input type="text" id="username" placeholder="Enter your name">
+    <button onclick="login()">Enter Dashboard</button>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      localStorage.setItem("user", user);
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>
