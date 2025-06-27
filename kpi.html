@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InsightHub - KPIs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="kpi-page">
+  <div class="layout-container">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+      <h2>InsightHub</h2>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="reports.html">Reports</a>
+      <a href="kpi.html" class="active">KPIs</a>
+      <a href="index.html">Logout</a>
+    </nav>
+
+    <!-- KPI Content -->
+    <main class="dashboard-main">
+      <section class="kpi-header">
+        <h2>Key Performance Indicators</h2>
+        <p>Track your core business metrics in real time.</p>
+      </section>
+
+      <section class="kpi-controls">
+        <label for="kpiFilter">Filter by:</label>
+        <select id="kpiFilter" onchange="filterKPIs()">
+          <option value="all">All</option>
+          <option value="financial">Financial</option>
+          <option value="customer">Customer</option>
+          <option value="internal">Internal Process</option>
+        </select>
+      </section>
+
+      <section class="kpi-grid">
+        <div class="kpi-card" data-category="financial">
+          <h3>Net Profit Margin</h3>
+          <p><span class="kpi-value">22%</span></p>
+        </div>
+        <div class="kpi-card" data-category="customer">
+          <h3>Customer Retention Rate</h3>
+          <p><span class="kpi-value">88%</span></p>
+        </div>
+        <div class="kpi-card" data-category="internal">
+          <h3>Avg. Resolution Time</h3>
+          <p><span class="kpi-value">2.4 days</span></p>
+        </div>
+        <div class="kpi-card" data-category="financial">
+          <h3>Revenue Growth</h3>
+          <p><span class="kpi-value">15%</span></p>
+        </div>
+        <div class="kpi-card" data-category="customer">
+          <h3>Customer Satisfaction</h3>
+          <p><span class="kpi-value">91%</span></p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function filterKPIs() {
+      const filter = document.getElementById("kpiFilter").value;
+      document.querySelectorAll(".kpi-card").forEach(card => {
+        card.style.display = filter === "all" || card.dataset.category === filter ? "block" : "none";
+      });
+    }
+  </script>
+</body>
+</html>

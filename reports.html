@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InsightHub - Reports</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body class="report-page">
+  <div class="layout-container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <h2>InsightHub</h2>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="reports.html" class="active">Reports</a>
+      <a href="kpi.html">KPI</a>
+      <a href="index.html">Logout</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="report-main">
+      <h2>Reports</h2>
+
+      <!-- Filters -->
+      <section class="report-filters">
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" />
+
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" />
+
+        <button onclick="filterReports()">Filter</button>
+        <button onclick="downloadExcel()">Download Excel</button>
+      </section>
+
+      <!-- Report Summary Cards -->
+      <section class="report-cards">
+        <div class="card">
+          <h3>Total Users</h3>
+          <p>1,240</p>
+        </div>
+        <div class="card">
+          <h3>Reports Submitted</h3>
+          <p>354</p>
+        </div>
+        <div class="card">
+          <h3>Resolved Issues</h3>
+          <p>297</p>
+        </div>
+      </section>
+
+      <!-- Chart -->
+      <section class="charts">
+        <div class="chart-container hidden" id="chartSection">
+          <h3>Reports Overview</h3>
+          <canvas id="reportChart"></canvas>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const reportData = [
+      { date: '2025-01-10', label: 'Jan', value: 40 },
+      { date: '2025-02-12', label: 'Feb', value: 55 },
+      { date: '2025-03-05', label: 'Mar', value: 70 },
+      { date: '2025-04-22', label: 'Apr', value: 60 },
+      { date: '2025-05-15', label: 'May', value: 90 }
+    ];
+
+    let currentFiltered = [];
+    let reportChart;
+
+    function filterReports() {
+      const start = document.getElementById('start-date').value;
+      const end = document.getElementById('end-date').value;
+
+      if (!start || !end) {
+        alert('Please select both start and end dates.');
+        return;
+      }
+
+      const startDate = new Date(start);
+      const endDate = new Date(end);
+
+      const filtered = reportData.filter(entry => {
+        const entryDate = new Date(entry.date);
+        return entryDate >= startDate && entryDate <= endDate;
+      });
+
+      if (filtered.length === 0) {
+        alert('No data available for this range.');
+        return;
+      }
+
+      currentFiltered = filtered;
+
+      // Show chart
+      document.getElementById("chartSection").classList.remove("hidden");
+
+      // Update or create chart
+      if (reportChart) {
+        reportChart.data.labels = filtered.map(e => e.label);
+        reportChart.data.datasets[0].data = filtered.map(e => e.value);
+        reportChart.update();
+      } else {
+        const ctx = document.getElementById('reportChart').getContext('2d');
+        reportChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: filtered.map(d => d.label),
+            datasets: [{
+              label: 'Reports',
+              data: filtered.map(d => d.value),
+              backgroundColor: '#0a3d62'
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false }
+            }
+          }
+        });
+      }
+    }
+
+    function downloadExcel() {
+      if (currentFiltered.length === 0) {
+        alert("Please filter the data first.");
+        return;
+      }
+
+      const exportData = [["Month", "Reports"], ...currentFiltered.map(e => [e.label, e.value])];
+      const ws = XLSX.utils.aoa_to_sheet(exportData);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Filtered_Report");
+      XLSX.writeFile(wb, "InsightHub_Filtered_Report.xlsx");
+    }
+  </script>
+</body>
+</html>

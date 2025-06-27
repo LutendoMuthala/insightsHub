@@ -1,0 +1,539 @@
+/* Input and Button Styles */
+input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 0.8em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 0.8em;
+  width: 100%;
+  background: #0a3d62;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #054470;
+}
+
+.login-container p {
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+/* Login Page Specific */
+.login-page {
+  background: none;
+}
+
+.login-container {
+  background-color: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 1.5rem;
+  color: #0a3d62;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 10px 0;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border 0.3s ease;
+}
+
+.login-container input:focus {
+  border-color: #0a3d62;
+  outline: none;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 0.9rem;
+  margin-top: 1rem;
+  background-color: #0a3d62;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-container button:hover {
+  background-color: #054470;
+}
+
+.login-container p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.login-container a {
+  color: #0a3d62;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+.logo-top-left {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.logo-top-left img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.footer-credit {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 0.85rem;
+  color: #fff;
+  background: transparent;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  background-color: #0a3d62;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header nav a {
+  color: white;
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+.dashboard-header nav a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
+}
+
+.dashboard-header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main Dashboard Content */
+.dashboard-main {
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  background-color: #f7f9fc;
+  flex-grow: 1;
+}
+
+/* Welcome Message */
+.welcome-message h2 {
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: #222;
+}
+
+/* Filters Section */
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1rem;
+}
+
+.filters label {
+  font-weight: 600;
+  color: #555;
+}
+
+.filters select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.filters select:hover,
+.filters select:focus {
+  border-color: #1a73e8;
+  outline: none;
+}
+
+/* KPI Cards */
+.cards {
+  display: flex;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.card.kpi {
+  background: #fff;
+  padding: 1.6rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgb(0 0 0 / 0.07);
+  flex: 1 1 220px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.2s ease;
+  cursor: default;
+}
+
+.card.kpi:hover {
+  transform: translateY(-6px);
+}
+
+.card-icon {
+  font-size: 2.8rem;
+  border-radius: 50%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.revenue-icon {
+  background: #1a73e8;
+}
+
+.growth-icon {
+  background: #34a853;
+}
+
+.satisfaction-icon {
+  background: #fbbc04;
+}
+
+.card.kpi h3 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.3rem;
+  color: #111;
+}
+
+.card.kpi p {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  color: #111;
+}
+
+.card.kpi small {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.kpi-change {
+  font-weight: 700;
+}
+
+.kpi-change.positive {
+  color: #34a853;
+}
+
+.kpi-change.negative {
+  color: #ea4335;
+}
+
+/* Charts Section */
+.charts {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.chart-container {
+  background: #fff;
+  padding: 1.8rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgb(0 0 0 / 0.07);
+  flex: 1 1 440px;
+}
+
+.chart-container h3 {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+/* Layout Container */
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f7f9fc;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #1a73e8;
+  color: #fff;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.sidebar h2.brand {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  font-size: 1.1rem;
+  color: #e8f0fe;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.25s ease;
+}
+
+.sidebar a i {
+  font-size: 1.2rem;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #185abc;
+  color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .cards, .charts {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 60px;
+    padding: 1rem;
+  }
+
+  .sidebar h2.brand,
+  .sidebar a span {
+    display: none;
+  }
+
+  .sidebar a {
+    justify-content: center;
+  }
+
+  .dashboard-main {
+    padding: 1rem 1.5rem;
+  }
+
+  .filters {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* ======== Reporting Page Styles ======== */
+
+.report-main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+  box-sizing: border-box;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #0a3d62;
+}
+
+.report-main > h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Filters - horizontally aligned with spacing */
+.report-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+.report-filters label {
+  min-width: 80px;
+  font-weight: 600;
+}
+
+.report-filters input[type="date"] {
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  width: 150px;
+}
+
+.report-filters input[type="date"]:focus {
+  border-color: #0a3d62;
+  outline: none;
+}
+
+.report-filters button {
+  background-color: #0a3d62;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+  width: auto; /* override previous full width */
+}
+
+.report-filters button:hover {
+  background-color: #054470;
+}
+
+/* Cards layout */
+.report-cards {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.report-cards .card {
+  flex: 1 1 250px;
+  background: #f9fafe;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 15px rgb(0 0 0 / 0.05);
+  color: #0a3d62;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.report-cards .card:hover {
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.15);
+}
+
+.report-cards .card h3 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.report-cards .card p {
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0;
+  color: #1a73e8;
+}
+
+/* Charts Section */
+.charts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.chart-container {
+  background: #fff;
+  padding: 1.8rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  flex: 1 1 480px;
+  max-width: 48%;
+  min-height: 320px;
+  position: relative;
+}
+
+.chart-container h3 {
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #0a3d62;
+}
+
+/* Optional class to hide a chart block */
+.chart-container.hidden {
+  display: none;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 900px) {
+  .charts {
+    flex-direction: column;
+  }
+
+  .chart-container {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
