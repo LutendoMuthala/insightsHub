@@ -385,3 +385,158 @@ body {
     gap: 1rem;
   }
 }
+
+/* ======== Reporting Page Styles ======== */
+
+.report-main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+  box-sizing: border-box;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #0a3d62;
+}
+
+.report-main > h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Filters - horizontally aligned with spacing */
+.report-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+.report-filters label {
+  min-width: 80px;
+  font-weight: 600;
+}
+
+.report-filters input[type="date"] {
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  width: 150px;
+}
+
+.report-filters input[type="date"]:focus {
+  border-color: #0a3d62;
+  outline: none;
+}
+
+.report-filters button {
+  background-color: #0a3d62;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+  width: auto; /* override previous full width */
+}
+
+.report-filters button:hover {
+  background-color: #054470;
+}
+
+/* Cards layout */
+.report-cards {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.report-cards .card {
+  flex: 1 1 250px;
+  background: #f9fafe;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 15px rgb(0 0 0 / 0.05);
+  color: #0a3d62;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.report-cards .card:hover {
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.15);
+}
+
+.report-cards .card h3 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.report-cards .card p {
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0;
+  color: #1a73e8;
+}
+
+/* Charts Section */
+.charts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chart-container {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
+  min-height: 320px;
+  position: relative;
+}
+
+.chart-container h3 {
+  font-weight: 700;
+  color: #0a3d62;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Show/hide chart container */
+.chart-container.hidden {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .report-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .report-filters label,
+  .report-filters input[type="date"],
+  .report-filters button {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .report-cards {
+    flex-direction: column;
+  }
+}

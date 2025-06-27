@@ -25,10 +25,10 @@
       <!-- Filters -->
       <section class="report-filters">
         <label for="start-date">Start Date:</label>
-        <input type="date" id="start-date">
+        <input type="date" id="start-date" />
 
         <label for="end-date">End Date:</label>
-        <input type="date" id="end-date">
+        <input type="date" id="end-date" />
 
         <button onclick="filterReports()">Filter</button>
         <button onclick="downloadExcel()">Download Excel</button>
@@ -53,6 +53,7 @@
       <!-- Chart -->
       <section class="charts">
         <div class="chart-container hidden" id="chartSection">
+          <h3>Reports Overview</h3>
           <canvas id="reportChart"></canvas>
         </div>
       </section>
