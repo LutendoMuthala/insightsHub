@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>InsightHub - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+  <!-- Keep the header clean for nav only -->
+  <header class="dashboard-header">
+    <nav>
+      <a href="report.html">Reports</a>
+      <a href="index.html">Logout</a>
+    </nav>
+  </header>
+
+  <main class="dashboard-main">
+   
+    <section class="welcome-message">
+      <h2>Welcome, <span id="user-name">User</span></h2>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Revenue</h3>
+        <p>R <span id="revenue">0</span></p>
+      </div>
+      <div class="card">
+        <h3>Growth</h3>
+        <p><span id="growth">0%</span></p>
+      </div>
+      <div class="card">
+        <h3>Customer Satisfaction</h3>
+        <p><span id="satisfaction">0%</span></p>
+      </div>
+    </section>
+    <section class="charts">
+  <div class="chart-container">
+    <h3>Monthly Revenue</h3>
+    <canvas id="revenueChart" width="400" height="200"></canvas>
+  </div>
+  
+  <div class="chart-container">
+    <h3>Customer Segments</h3>
+    <canvas id="customerChart" width="400" height="200"></canvas>
+  </div>
+</section>
+
+
+    <section class="controls">
+      <label for="scenario">Scenario:</label>
+      <select id="scenario" onchange="updateScenario()">
+        <option value="base">Base Scenario</option>
+        <option value="highMarketing">High Marketing Spend</option>
+        <option value="lowRetention">Low Customer Retention</option>
+      </select>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
