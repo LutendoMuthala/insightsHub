@@ -5,39 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>InsightHub - Dashboard</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="layout-container">
     <!-- Sidebar -->
     <nav class="sidebar">
-      <h2>InsightHub</h2>
-      <a href="dashboard.html" class="active">Dashboard</a>
-      <a href="reports.html">Reports</a>
-      <a href="index.html">Logout</a>
+      <h2 class="brand">InsightHub</h2>
+      <a href="dashboard.html" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
+      <a href="reports.html"><i class="fas fa-file-alt"></i> Reports</a>
+      <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </nav>
 
     <!-- Main Dashboard -->
     <main class="dashboard-main">
       <section class="welcome-message">
-        <h2>Welcome, <span id="user-name">User</span></h2>
+        <h2>Welcome, <span id="user-name">Lutendo</span></h2>
       </section>
 
+      <!-- Filter Controls -->
+      <section class="filters">
+        <label for="scenario">Scenario:</label>
+        <select id="scenario" onchange="updateScenario()">
+          <option value="base">Base Scenario</option>
+          <option value="highMarketing">High Marketing Spend</option>
+          <option value="lowRetention">Low Customer Retention</option>
+        </select>
+
+        <label for="dateRange">Date Range:</label>
+        <select id="dateRange" onchange="filterData()">
+          <option value="monthly">Monthly</option>
+          <option value="quarterly">Quarterly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </section>
+
+      <!-- KPI Cards -->
       <section class="cards">
-        <div class="card">
-          <h3>Revenue</h3>
-          <p>R <span id="revenue">0</span></p>
+        <div class="card kpi">
+          <div class="card-icon revenue-icon"><i class="fas fa-dollar-sign"></i></div>
+          <div>
+            <h3>Revenue</h3>
+            <p>R <span id="revenue">0</span></p>
+            <small><span class="kpi-change positive">▲ +5%</span> vs last month</small>
+          </div>
         </div>
-        <div class="card">
-          <h3>Growth</h3>
-          <p><span id="growth">0%</span></p>
+        <div class="card kpi">
+          <div class="card-icon growth-icon"><i class="fas fa-chart-line"></i></div>
+          <div>
+            <h3>Growth</h3>
+            <p><span id="growth">0%</span></p>
+            <small><span class="kpi-change positive">▲ +2.3%</span> YoY</small>
+          </div>
         </div>
-        <div class="card">
-          <h3>Customer Satisfaction</h3>
-          <p><span id="satisfaction">0%</span></p>
+        <div class="card kpi">
+          <div class="card-icon satisfaction-icon"><i class="fas fa-smile"></i></div>
+          <div>
+            <h3>Customer Satisfaction</h3>
+            <p><span id="satisfaction">0%</span></p>
+            <small><span class="kpi-change negative">▼ -1.2%</span> this quarter</small>
+          </div>
         </div>
       </section>
 
+      <!-- Charts -->
       <section class="charts">
         <div class="chart-container">
           <h3>Monthly Revenue</h3>
@@ -47,15 +79,6 @@
           <h3>Customer Segments</h3>
           <canvas id="customerChart" width="400" height="200"></canvas>
         </div>
-      </section>
-
-      <section class="controls">
-        <label for="scenario">Scenario:</label>
-        <select id="scenario" onchange="updateScenario()">
-          <option value="base">Base Scenario</option>
-          <option value="highMarketing">High Marketing Spend</option>
-          <option value="lowRetention">Low Customer Retention</option>
-        </select>
       </section>
     </main>
   </div>
