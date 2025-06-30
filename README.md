@@ -3,7 +3,8 @@
 **InsightHub** is a responsive, web-based business intelligence dashboard designed to help internal analysts and decision-makers monitor and visualize key performance indicators (KPIs). Built with HTML, CSS, and JavaScript, the platform offers intuitive navigation across login, dashboard, KPI, and report pages.
 
 ---
-
+## Live DEMO
+ https://lutendomuthala.github.io/insightsHub/index.html
 ## 🚀 Features
  - Landing page
 - 🔐 **Login / Sign-Up Pages** — Secure access to the platform with modern, responsive forms.
