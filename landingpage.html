@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InsightHub - Welcome</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Landing page specific styles with background image */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      /* Background image and overlay */
+      background: 
+        linear-gradient(rgba(10, 61, 98, 0.7), rgba(10, 61, 98, 0.7)),
+        url('datanalytics.jpg.webp') no-repeat center center fixed;
+      background-size: cover;
+      user-select: none;
+    }
+    h1.landing-title {
+      font-size: 6rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    p.subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .btn-login {
+      background-color: #0a3d62;
+      color: white;
+      padding: 1rem 3rem;
+      font-size: 1.25rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    .btn-login:hover {
+      background-color: #054470;
+    }
+    @media (max-width: 600px) {
+      h1.landing-title {
+        font-size: 3.5rem;
+      }
+      .btn-login {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="landing-title">InsightHub</h1>
+  <p class="subtitle">Analyze. Predict. Succeed.</p>
+  <a href="index.html" class="btn-login">Log In</a>
+</body>
+</html>
