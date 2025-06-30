@@ -164,7 +164,8 @@ body {
 
 /* Main Dashboard Content */
 .dashboard-main {
-  padding: 2rem 3rem;
+  padding: 2rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
@@ -389,9 +390,9 @@ body {
 /* ======== Reporting Page Styles ======== */
 
 .report-main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 2rem 2rem;
+  width: 100%;
+  margin: 0;
+  padding: 2rem;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
@@ -536,4 +537,77 @@ body {
     max-width: 100%;
     flex: 1 1 100%;
   }
+}
+
+/* === KPI Page Styles === */
+
+.kpi-header {
+  margin-bottom: 1.5rem;
+}
+
+.kpi-header h2 {
+  font-size: 2rem;
+  color: #0a3d62;
+  margin-bottom: 0.5rem;
+}
+
+.kpi-header p {
+  color: #444;
+  font-size: 1rem;
+}
+
+.kpi-controls {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.kpi-controls select {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.kpi-controls select:focus {
+  border-color: #1a73e8;
+  outline: none;
+}
+
+/* KPI Grid Layout */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* KPI Card Styling */
+.kpi-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 1.6rem 1.8rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-6px);
+}
+
+.kpi-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0a3d62;
+  margin-bottom: 0.8rem;
+}
+
+.kpi-card .kpi-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a73e8;
 }
