@@ -7,6 +7,221 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <style>
+    /* Additional styles for upload functionality */
+    .report-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .upload-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .upload-btn {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .upload-btn:hover {
+      background-color: #1557b0;
+    }
+
+    .upload-input {
+      display: none;
+    }
+
+    .upload-status {
+      font-size: 0.9rem;
+      color: #666;
+      margin-left: 0.5rem;
+    }
+
+    .upload-success {
+      color: #28a745;
+    }
+
+    .upload-error {
+      color: #dc3545;
+    }
+
+    /* Existing report styles */
+    .report-main {
+      width: 100%;
+      margin: 0;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+      box-sizing: border-box;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      color: #0a3d62;
+    }
+
+    .report-main > h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .report-filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 2rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1rem;
+      font-size: 1rem;
+      color: #444;
+    }
+
+    .report-filters label {
+      min-width: 80px;
+      font-weight: 600;
+    }
+
+    .report-filters input[type="date"] {
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+      width: 150px;
+    }
+
+    .report-filters input[type="date"]:focus {
+      border-color: #0a3d62;
+      outline: none;
+    }
+
+    .report-filters button {
+      background-color: #0a3d62;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      flex-shrink: 0;
+      width: auto;
+    }
+
+    .report-filters button:hover {
+      background-color: #054470;
+    }
+
+    .report-cards {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .report-cards .card {
+      flex: 1 1 250px;
+      background: #f9fafe;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+      color: #0a3d62;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .report-cards .card:hover {
+      box-shadow: 0 6px 20px rgb(0 0 0 / 0.15);
+    }
+
+    .report-cards .card h3 {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .report-cards .card p {
+      font-weight: 700;
+      font-size: 2rem;
+      margin: 0;
+      color: #1a73e8;
+    }
+
+    .charts {
+      margin-top: 2rem;
+    }
+
+    .chart-container {
+      background: #f9fafe;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+    }
+
+    .chart-container h3 {
+      margin-bottom: 1rem;
+      color: #0a3d62;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Basic sidebar styles for demo */
+    .layout-container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: #0a3d62;
+      color: white;
+      padding: 2rem 1rem;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+    }
+  </style>
 </head>
 <body class="report-page">
   <div class="layout-container">
@@ -21,7 +236,20 @@
 
     <!-- Main Content -->
     <main class="report-main">
-      <h2>Reports</h2>
+      <!-- Header with Upload -->
+      <div class="report-header">
+        <h2>Reports</h2>
+        <div class="upload-section">
+          <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+            </svg>
+            Upload Data
+          </button>
+          <input type="file" id="fileInput" class="upload-input" accept=".xlsx,.xls,.csv" onchange="handleFileUpload(event)" />
+          <span id="uploadStatus" class="upload-status"></span>
+        </div>
+      </div>
 
       <!-- Filters -->
       <section class="report-filters">
@@ -39,15 +267,15 @@
       <section class="report-cards">
         <div class="card">
           <h3>Total Users</h3>
-          <p>1,240</p>
+          <p id="totalUsers">1,240</p>
         </div>
         <div class="card">
           <h3>Reports Submitted</h3>
-          <p>354</p>
+          <p id="reportsSubmitted">354</p>
         </div>
         <div class="card">
           <h3>Resolved Issues</h3>
-          <p>297</p>
+          <p id="resolvedIssues">297</p>
         </div>
       </section>
 
@@ -62,7 +290,7 @@
   </div>
 
   <script>
-    const reportData = [
+    let reportData = [
       { date: '2025-01-10', label: 'Jan', value: 40 },
       { date: '2025-02-12', label: 'Feb', value: 55 },
       { date: '2025-03-05', label: 'Mar', value: 70 },
@@ -72,6 +300,146 @@
 
     let currentFiltered = [];
     let reportChart;
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      const statusElement = document.getElementById('uploadStatus');
+      
+      if (!file) return;
+
+      statusElement.textContent = 'Processing...';
+      statusElement.className = 'upload-status';
+
+      const reader = new FileReader();
+      
+      reader.onload = function(e) {
+        try {
+          let data;
+          
+          if (file.name.endsWith('.csv')) {
+            // Handle CSV files
+            data = parseCSV(e.target.result);
+          } else {
+            // Handle Excel files
+            const workbook = XLSX.read(e.target.result, { type: 'binary' });
+            const sheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[sheetName];
+            data = XLSX.utils.sheet_to_json(worksheet);
+          }
+
+          if (processUploadedData(data)) {
+            statusElement.textContent = 'Upload successful!';
+            statusElement.className = 'upload-status upload-success';
+            updateSummaryCards();
+            
+            // Clear status after 3 seconds
+            setTimeout(() => {
+              statusElement.textContent = '';
+            }, 3000);
+          } else {
+            throw new Error('Invalid data format');
+          }
+          
+        } catch (error) {
+          statusElement.textContent = 'Upload failed. Please check file format.';
+          statusElement.className = 'upload-status upload-error';
+          
+          setTimeout(() => {
+            statusElement.textContent = '';
+          }, 3000);
+        }
+      };
+
+      if (file.name.endsWith('.csv')) {
+        reader.readAsText(file);
+      } else {
+        reader.readAsBinaryString(file);
+      }
+
+      // Clear the input so the same file can be uploaded again
+      event.target.value = '';
+    }
+
+    function parseCSV(csvText) {
+      const lines = csvText.split('\n');
+      const headers = lines[0].split(',').map(h => h.trim());
+      const data = [];
+
+      for (let i = 1; i < lines.length; i++) {
+        if (lines[i].trim()) {
+          const values = lines[i].split(',');
+          const row = {};
+          headers.forEach((header, index) => {
+            row[header] = values[index] ? values[index].trim() : '';
+          });
+          data.push(row);
+        }
+      }
+
+      return data;
+    }
+
+    function processUploadedData(data) {
+      // Expected format: columns should include date, label, and value
+      // This function validates and processes the uploaded data
+      
+      if (!data || data.length === 0) return false;
+
+      const firstRow = data[0];
+      const hasRequiredFields = Object.keys(firstRow).some(key => 
+        key.toLowerCase().includes('date') || 
+        key.toLowerCase().includes('month') || 
+        key.toLowerCase().includes('label')
+      ) && Object.keys(firstRow).some(key => 
+        key.toLowerCase().includes('value') || 
+        key.toLowerCase().includes('report') || 
+        key.toLowerCase().includes('count')
+      );
+
+      if (!hasRequiredFields) {
+        console.log('Data does not contain required fields');
+        return false;
+      }
+
+      // Map the data to our expected format
+      const mappedData = data.map((row, index) => {
+        const dateKey = Object.keys(row).find(key => 
+          key.toLowerCase().includes('date') || 
+          key.toLowerCase().includes('month')
+        );
+        const labelKey = Object.keys(row).find(key => 
+          key.toLowerCase().includes('label') || 
+          key.toLowerCase().includes('month')
+        );
+        const valueKey = Object.keys(row).find(key => 
+          key.toLowerCase().includes('value') || 
+          key.toLowerCase().includes('report') || 
+          key.toLowerCase().includes('count')
+        );
+
+        return {
+          date: row[dateKey] || `2025-${String(index + 1).padStart(2, '0')}-01`,
+          label: row[labelKey] || row[dateKey] || `Item ${index + 1}`,
+          value: parseInt(row[valueKey]) || 0
+        };
+      }).filter(item => item.value > 0);
+
+      // Update the report data
+      reportData = mappedData;
+      
+      return true;
+    }
+
+    function updateSummaryCards() {
+      // Update summary cards based on new data
+      const totalValue = reportData.reduce((sum, item) => sum + item.value, 0);
+      const totalReports = reportData.length;
+      const resolvedPercentage = 0.84; // Assuming 84% resolution rate
+
+      document.getElementById('totalUsers').textContent = Math.round(totalValue * 3.5).toLocaleString();
+      document.getElementById('reportsSubmitted').textContent = totalValue.toLocaleString();
+      document.getElementById('resolvedIssues').textContent = Math.round(totalValue * resolvedPercentage).toLocaleString();
+    }
 
     function filterReports() {
       const start = document.getElementById('start-date').value;
